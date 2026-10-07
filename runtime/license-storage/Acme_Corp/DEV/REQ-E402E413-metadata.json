@@ -1,0 +1,16 @@
+{
+  "id" : null,
+  "requestId" : "REQ-E402E413",
+  "customer" : "Acme Corp",
+  "product" : "Analytics Suite",
+  "version" : "1.0",
+  "environment" : "DEV",
+  "licenseType" : "TRIAL",
+  "status" : "ACTIVE",
+  "createdDate" : "2026-10-05",
+  "expiryDate" : "2026-10-31",
+  "features" : "dashboard,telemetry",
+  "createdBy" : "admin",
+  "filePath" : null,
+  "signature" : "XFuwpgE+rDIcKNP/2fRhysGSErbsQqI6UZZY+hlV9ox0n3Jj1wkqC1gYbemmVNBA04Vef4TRFgLWxSpUPeNxtNAhNt25CZlQIHxzuFFhHEeaU0iL3OZjPPZwo7Q0tryC0R4aGS2lsluLYCUu1dIVApJOwvtT9fHQosdhBOifDC/EKPUfj3MbaFn6oLqVqtIiLHtmZPe8QvwkHBC7lzuU4ZJ+IsNqv1LgRvPGUDV0FSFRnAB4Cp7sTpFuWVs9F2qhKhTxzDcW+QzWgbgR3D16e7J/htVAMShrAl4dLHTQWWyHp+V24Gf5GAfL1qmlB5KDa1Sd1NUw8gIoXRpuOMEsGg=="
+}

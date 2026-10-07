@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="dist/app.js" defer></script>
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- ============ Sidebar ============ -->
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar__brand">
+        <span class="sidebar__logo">◆</span>
+        <span class="sidebar__title">Nimbus</span>
+      </div>
+
+      <nav class="sidebar__nav">
+        <a href="#/dashboard" class="nav-link" data-route="dashboard">
+          <svg class="nav-link__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span class="nav-link__label">Dashboard</span>
+        </a>
+        <a href="#/projects" class="nav-link" data-route="projects">
+          <svg class="nav-link__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg>
+          <span class="nav-link__label">Projects</span>
+        </a>
+        <a href="#/team" class="nav-link" data-route="team">
+          <svg class="nav-link__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 2c-2.7 0-8 1.3-8 4v3h16v-3c0-2.7-5.3-4-8-4zm8 0c-.3 0-.7 0-1.1.1 1.2.9 2.1 2.1 2.1 3.9v3h7v-3c0-2.7-5.3-4-8-4z"/></svg>
+          <span class="nav-link__label">Team</span>
+        </a>
+        <a href="#/reports" class="nav-link" data-route="reports">
+          <svg class="nav-link__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h3v11H5V9zm5.5-5h3v16h-3V4zM16 13h3v7h-3v-7z"/></svg>
+          <span class="nav-link__label">Reports</span>
+        </a>
+        <a href="#/messages" class="nav-link" data-route="messages">
+          <svg class="nav-link__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+          <span class="nav-link__label">Messages</span>
+        </a>
+        <a href="#/settings" class="nav-link" data-route="settings">
+          <svg class="nav-link__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3h-4l-.4 2.9a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.7 1.7 1L11 21h4l.4-2.9c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.5L19.4 13zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
+          <span class="nav-link__label">Settings</span>
+        </a>
+      </nav>
+
+      <button class="sidebar__collapse" id="collapseBtn" type="button" aria-label="Collapse sidebar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg>
+      </button>
+    </aside>
+
+    <!-- Backdrop for mobile slide-in -->
+    <div class="backdrop" id="backdrop" hidden></div>
+
+    <!-- ============ Top bar ============ -->
+    <header class="topbar">
+      <button class="icon-btn topbar__menu" id="menuBtn" type="button" aria-label="Toggle sidebar" aria-controls="sidebar" aria-expanded="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+      </button>
+
+      <form class="search" id="searchForm" role="search">
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+        <input class="search__input" id="searchInput" type="search" placeholder="Search…" aria-label="Search" autocomplete="off" />
+        <kbd class="search__kbd">Ctrl K</kbd>
+        <ul class="search__results" id="searchResults" role="listbox" hidden></ul>
+      </form>
+
+      <div class="topbar__actions">
+        <!-- Notifications -->
+        <div class="dropdown" id="notifDropdown">
+          <button class="icon-btn" id="notifBtn" type="button" aria-label="Notifications" aria-haspopup="true" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6V11c0-3.1-1.6-5.6-4.5-6.3V4a1.5 1.5 0 0 0-3 0v.7C7.6 5.4 6 7.9 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+            <span class="badge" id="notifBadge">0</span>
+          </button>
+          <div class="dropdown__panel dropdown__panel--wide" role="menu" hidden>
+            <div class="dropdown__header">
+              <span>Notifications</span>
+              <button class="link-btn" id="markAllRead" type="button">Mark all read</button>
+            </div>
+            <ul class="notif-list" id="notifList"></ul>
+          </div>
+        </div>
+
+        <!-- User menu -->
+        <div class="dropdown" id="userDropdown">
+          <button class="user-btn" id="userBtn" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="avatar">JD</span>
+            <span class="user-btn__name">Jordan Doe</span>
+            <svg class="user-btn__caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="dropdown__panel" role="menu" hidden>
+            <div class="dropdown__header dropdown__header--stack">
+              <strong>Jordan Doe</strong>
+              <span class="muted">jordan@example.com</span>
+            </div>
+            <a href="#/profile" class="menu-item" role="menuitem">My Profile</a>
+            <a href="#/settings" class="menu-item" role="menuitem">Account Settings</a>
+            <a href="#/billing" class="menu-item" role="menuitem">Billing</a>
+            <button class="menu-item" id="themeToggle" type="button" role="menuitem">Toggle theme</button>
+            <hr class="menu-divider" />
+            <button class="menu-item menu-item--danger" id="signOutBtn" type="button" role="menuitem">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ Main content ============ -->
+    <main class="content" id="content" tabindex="-1"></main>
+  </div>
+</body>
+</html>
